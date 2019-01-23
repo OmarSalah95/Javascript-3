@@ -1,10 +1,10 @@
 /* The for principles of "this";
 * in your own words. explain the four principle for the "this" keyword below.
 *
-* 1. 
-* 2. 
-* 3. 
-* 4. 
+* 1. Bind:
+* 2. Call:   
+* 3. Apply:
+* 4. New:
 *
 * write out a code example of each explanation above
 */
@@ -13,14 +13,52 @@
 
 // code example for Window Binding
 
+// const assassin = {
+//   name: 'Black Shadow',
+//   class: 'Ninja',
+//   target:'Emperor',
+//   kill: function() {
+//     // with window binding, food cannot be found!
+//    console.log(`${name} assassinated the ${target}`) 
+//   }
+// }
+
 // Principle 2
 
 // code example for Implicit Binding
 
+// const assassin = {
+//     name: 'Black Shadow',
+//     class: 'Ninja',
+//     target:'Emperor',
+//     kill: function() {
+//       // with window binding, food cannot be found!
+//      console.log(`${this.name} assassinated the ${this.target}`) 
+//     }
+//   }
+
 // Principle 3
 
 // code example for New Binding
+function Assassin(name, type, target) {
+    this.name = name;
+    this.type = type;
+    this.target = target;
+    this.kill = function() {
+        console.log(`${this.name} assassinated the ${this.target}`) 
+    }
+  }
 
+const assassin1 = new Assassin('snipey', "'Sniper", 'P.O.T.U.S')
+console.log(assassin1.kill());
 // Principle 4
 
-// code example for Explicit Binding
+// code example for Explicit BindingA
+const assassin2 = new Assassin('Black Shadow', 'Ninja', 'The Emperor')
+
+const skills = ['Hand to hand combat', 'Edged Weapons', 'Not Knowing what else to type', 'stuff', 'things'];
+
+function introduce(skills1) {
+  
+  console.log(`I am known as ${this.name}, I am an assassin skilled in the arts of ${skills1}, ${skills2}, ${skills3}`)
+}
