@@ -19,7 +19,7 @@ function GameObject(attributes){
   this.dimensions = attributes.dimensions;
 }
 
-GameObject.prototype.destroy = function{
+GameObject.prototype.destroy = function (){
   return `${this.name} was removed from the game.`;
 }
 
@@ -36,9 +36,12 @@ function CharacterStats(attributes){
   this.name = attributes.name;
 }
 
-CharacterStats.prototype.takeDamage = () => `${this.name} took damage.`;
-
 CharacterStats.prototype = Object.create(GameObject.prototype);
+CharacterStats.prototype.takeDamage = function(){
+ return `${this.name} took damage.`;
+
+}
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -52,11 +55,13 @@ CharacterStats.prototype = Object.create(GameObject.prototype);
  function Humanoid(attributes){
    CharacterStats.call(this, attributes);
    this.team = attributes.team;
-   this.weapon = attributes.weapon;
+   this.weapons = attributes.weapons;
    this.language = attributes.language; 
  }
+ 
+  Humanoid.prototype = Object.create(CharacterStats.prototype)
+  Humanoid.prototype.greet = function(){ return `${this.name}offers a greeting in ${this.language}`};
 
-Humanoid.prototype.greet = () => `${this.name}offers a greeting in ${this.language}`
 
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -66,7 +71,7 @@ Humanoid.prototype.greet = () => `${this.name}offers a greeting in ${this.langua
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -127,7 +132,7 @@ Humanoid.prototype.greet = () => `${this.name}offers a greeting in ${this.langua
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
