@@ -13,15 +13,15 @@
 
 // code example for Window Binding
 
-// const assassin = {
-//   name: 'Black Shadow',
-//   class: 'Ninja',
-//   target:'Emperor',
-//   kill: function() {
-//     // with window binding, food cannot be found!
-//    console.log(`${name} assassinated the ${target}`) 
-//   }
-// }
+const assassin = {
+  name: 'Black Shadow',
+  class: 'Ninja',
+  target:'Emperor',
+  kill: function() {
+    // with window binding, food cannot be found!
+   console.log(`${name} assassinated the ${target}`) 
+  }
+}
 
 // Principle 2
 
@@ -58,7 +58,10 @@ const assassin2 = new Assassin('Black Shadow', 'Ninja', 'The Emperor')
 
 const skills = ['Hand to hand combat', 'Edged Weapons', 'Not Knowing what else to type', 'stuff', 'things'];
 
-function introduce(skills1) {
+function jobsearch(skills) {
   
-  console.log(`I am known as ${this.name}, I am an assassin skilled in the arts of ${skills1}, ${skills2}, ${skills3}`)
+  console.log(`I am known as ${this.name}, I am an assassin skilled in the arts of ${skills.join(", ")}` )
 }
+jobsearch.call(assassin1, skills)
+
+
