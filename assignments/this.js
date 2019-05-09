@@ -18,7 +18,6 @@ const assassin = {
 	class: 'Ninja',
 	target: 'Emperor',
 	kill: function() {
-		// with window binding, food cannot be found!
 		console.log(`${name} assassinated the ${target}`);
 	}
 };
@@ -32,7 +31,6 @@ const assassin = {
 //     class: 'Ninja',
 //     target:'Emperor',
 //     kill: function() {
-//       // with window binding, food cannot be found!
 //      console.log(`${this.name} assassinated the ${this.target}`)
 //     }
 //   }
